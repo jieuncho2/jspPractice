@@ -9,7 +9,7 @@
 <body>
 	<%
 		java.util.Date today = new java.util.Date();
-		out.println(today);
+		out.println("Today: " + today);
 	%>
 </body>
 </html>

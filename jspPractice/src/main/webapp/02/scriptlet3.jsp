@@ -7,16 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%--
-		
-	--%>
+	<%-- 스크립틀릿 태그에 0부터 10까지의 짝수 출력하기 --%>
 	<%
-		out.println("2 + 3 = " + sum);
-	%>
-	<%!
-		int a = 2;
-		int b = 3;
-		int sum = a + b;
+		for(int i = 0; i <= 10; i++) {
+			if(i % 2 == 0) {
+				out.println(i + "<br>");
+			}
+		}
 	%>
 </body>
 </html>

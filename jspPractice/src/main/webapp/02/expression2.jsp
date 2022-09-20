@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- 표형문 태그 사용 예 --%>
+	<%-- 표현문 태그로 현재 날짜 출력하기 --%>
 	<p>Today's date: <%= new java.util.Date() %></p>
 </body>
 </html>

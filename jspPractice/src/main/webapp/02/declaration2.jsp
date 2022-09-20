@@ -11,9 +11,10 @@
 	<%-- 선언문 태그 사용 예: 전역 메소드 선언 --%>
 	<%-- 스크립틀랫 태그 --%>
 	<%
-		out.println(myMethod(0));
+		out.println(myMethod(0)); // 전역 메소드 myMethod() 호출
 	%>
 	<%!
+		// 전역 메서드 실행
 		public int myMethod(int count) {
 			return ++count;
 		}

@@ -12,7 +12,7 @@
 		int count = 0;
 	%>
 	Page Count is
-	<%-- --%>
+	<%-- 지역 변수 count를 1 증가시킴 --%>
 	<%=++count%>
 </body>
 </html>

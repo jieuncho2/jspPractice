@@ -7,14 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%--
-		
-	--%>
 	<%
-		int a = 2;
-		int b = 3;
-		int sum = a + b;
-		out.println("2 + 3 = " + sum);
+		int count = 0; // 지역 변수 선언
+	%>
+	Page Count is
+	<%
+		out.println(++count); // 지역 변수 1 증가
 	%>
 </body>
 </html>

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%= java.util.Calendar.getInstance().getTime() %>
+	Current Time: <%= java.util.Calendar.getInstance().getTime() %>
 </body>
 </html>

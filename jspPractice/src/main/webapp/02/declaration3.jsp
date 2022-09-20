@@ -7,14 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- 선언문 태그 사용 예: 전역 변수 선언 --%>
+	<%-- 선언문 태그에 전역 메서드 사용하기 --%>
+	<%-- 전역 메서드 sum()를 선언하기 위해 선언문 태그를 작성 --%>
 	<%!
 		int sum(int a, int b) {
 		return a + b;
-	}
+		}
 	%>
+	<%-- 결과 값 출력을 위해 스크립틀릿 태그를 작성 --%>
 	<%
-		out.println("2 + 3 = " + sum(2, 3));
+		out.println("2 + 3 = " + sum(2, 3)); // 선언문 태그에 선언된 전역 메서드 sum() 호출
 	%>
 </body>
 </html>
