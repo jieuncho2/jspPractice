@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- 표형문 태그 사용 예 --%>
+	<%-- 표현문 태그 사용 예 --%>
 	<%
 		int count = 0;
 	%>
