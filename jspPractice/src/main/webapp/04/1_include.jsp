@@ -7,12 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="bean" class="user.GuGuDan" />
-	<%
-		for(int i = 1; i < 10; i++) {
-			int m = bean.process(5, i);	
-			out.print("5 * " + i + " = " + m + "<br>");
-		}
-	%>
+	<h4>구구단 출력하기</h4>
+	<jsp:include page="1_data.jsp">
+		<jsp:param value="5" name="num"/>
+	</jsp:include>
 </body>
 </html>
