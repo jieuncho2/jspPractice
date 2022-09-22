@@ -9,6 +9,6 @@
 <body>
 	<h2>forward 액션 태그</h2>
 	<jsp:forward page="forward_date.jsp"></jsp:forward>
-	<p>------------------</p>
+	<p>------------------------------</p>
 </body>
 </html>
