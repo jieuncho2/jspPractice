@@ -97,7 +97,7 @@
 
             <li>
                 <label>생년월일</label>
-                <select name="birth_year">
+                <select name="birth[]">
                     <option value="1980년">1980</option>
                     <option value="1981년">1981</option>
                     <option value="1982년">1982</option>
@@ -120,7 +120,7 @@
                     <option value="1999년">1999</option>
                     <option value="2000년">2000</option>
                 </select>년
-                <select name="birth_month">
+                <select name="birth[]">
                     <option value="1월">1</option>
                     <option value="2월">2</option>
                     <option value="3월">3</option>
@@ -134,7 +134,7 @@
                     <option value="11월">11</option>
                     <option value="12월">12</option>
                 </select>월
-                <select name="birth_day">
+                <select name="birth[]">
                     <option value="1일">1</option>
                     <option value="2일">2</option>
                     <option value="3일">3</option>
@@ -170,8 +170,8 @@
             </li>
 
             <li>
-                <label for="birth">생년월일</label>
-                <input type="date" name="birth" id="birth">
+                <label for="birth2">생년월일</label>
+                <input type="date" name="birth2" id="birth">
             </li>
 
             <li>
@@ -240,6 +240,6 @@
     
     <script src="member.js"></script>
     <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
-
+    
 </body>
 </html>
