@@ -186,7 +186,6 @@
             <li>
                 <label>주소 2</label>
                 <input name="address2" id="addr2" size="70" maxlength="70">
-                </td></tr>
             </li>
 
             <li>
