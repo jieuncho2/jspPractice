@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- --%>
+	<%-- page 디렉티브 태그에 Date 클래스를 이용항 현재 날짜 출력하기 --%>
 	
-	<%-- --%>
+	<%--java.util.Date 패키지를 사용하기 위해 page 디렉티브 태그의 import 속성을 작성 --%>
 	<%@ page import="java.util.Date" %>
-	<%-- --%>
+	<%-- 현재 날짜를 출력하도록 표현문 태그를 작성 --%>
 	Today is <%= new Date() %>
 </body>
 </html>
