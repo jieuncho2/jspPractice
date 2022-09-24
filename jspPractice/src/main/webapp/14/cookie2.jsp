@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%--
+	쿠키 객체에 저장된 모든 쿠키 값 가져와 출력하기
+	1) 쿠키 정보를 얻어오도록 request 내장 객체의 getCookies() 메서드 작성
+	2) 얻어온 쿠키 정보의 개수를 출력하도록 Cookie 객체의 length를 작성
+	3) 얻어온 쿠키 정보에서 쿠키 이름과 값을 하나씩 출력하도록 Cookie 객체의 getName(), getValue() 메서드 작성
+	--%>
 	<%
 		boolean isLogin = false;
 		Cookie[] cookies = request.getCookies();
