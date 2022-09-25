@@ -51,17 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const formLogin = document.forms.member_insert;
         if(formLogin.id.value === '') {
             alert('아이디를 입력해 주세요.');
-          	id.focus();
             return;
         }
         if(formLogin.password.value === '') {
             alert('비밀번호를 입력해 주세요.');
-            password.focus();
             return;
         }
         if(formLogin.password2.value === '') {
             alert('비밀번호 확인을 입력해 주세요.');
-            password2.focus();
             return;
         }
         if(formLogin.password.value !== formLogin.password2.value) {
@@ -70,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if(formLogin.name.value === '') {
             alert('이름을 입력해 주세요.');
-            name.focus();
             return;
         }
         formLogin.action = 'member_insert.jsp'; 
