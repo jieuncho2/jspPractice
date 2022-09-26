@@ -8,23 +8,30 @@
 </head>
 <body>
 	<%--
-		세션 유효 시간을 가져와 출력하기
-		1) 세션에 설정된 유효 시간을 가져오도록 session 내장 객체의 getMaxInactiveInterval() 메서드를 작성하고 유효 시간을 출력하도록 작성
-		2)
-		3)
+		세션에 저장된 속성 값 가져와 출력하기
+		1) 세션에 저장된 세션 속성 이름 userID를 삭제하도록 session 내장 객체의 removeAttribute() 메서드를 작성
 	--%>
-	<p><h4>------------------세션 유효 시간 변경 전------------------</h4>
 	<%
-		int time = session.getMaxInactiveInterval() / 60;
-	
-		out.println("세션 유효 시간: " + time + "분<br>");
-	%>
-	<p><h4>------------------세션 유효 시간 변경 후------------------</h4>
-	<%
-		session.setMaxInactiveInterval(60 * 60);
-		time = session.getMaxInactiveInterval() / 60;
+		String userID = (String)session.getAttribute("userID");
+		String password = (String)session.getAttribute("userPW");
+		out.println("설정된 세션 userID: " + userID + "<br>");
+		out.println("설정된 세션 userPW: " + password + "<br>");
 		
-		out.println("세션 유효 시간: " + time + "분<br>");
+		if(request.isRequestedSessionIdValid() == true) {
+			out.print("세션이 유효합니다.");
+		} else {
+			out.print("세션이 유효하지 않습니다.");
+		}
+		
+	 	session.invalidate();
+	%>
+	<p><h4>------------------세션을 삭제한 후------------------</h4>
+	<%
+		if(request.isRequestedSessionIdValid() == true) {
+			out.print("세션이 유효합니다.");
+		} else {
+			out.print("세션이 유효하지 않습니다.");
+		}
 	%>
 </body>
 </html>
