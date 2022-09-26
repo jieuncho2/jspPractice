@@ -30,7 +30,7 @@
 		out.println("세션 아이디: " + session_id + "<br>");
 		out.println("요청 시작 시간: " + start_time + "<br>");
 		out.println("요청 마지막 시간: " + last_time + "<br>");
-		out.println("웹 사이트에서 시간: " + used_time + "<br>");
+		out.println("웹 사이트에서 시간: " + used_time + "분<br>");
 	%>
 </body>
 </html>

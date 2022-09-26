@@ -7,9 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<p><h4>------------------세션을 삭제하기 전------------------</h4>
 	<%--
-		세션에 저장된 속성 값 가져와 출력하기
-		1) 세션에 저장된 세션 속성 이름 userID를 삭제하도록 session 내장 객체의 removeAttribute() 메서드를 작성
+		세션에 저장된 모든 속성 삭제하기
+		1) 요청에 포함된 클라이언트의 세션이 유효하면 유요한 메시지를 출력하고 그렇지 않으면 유효하지 않은 메시지를 출력하도록 작성
+		2) 세션에 저장된 모든 세션 속성을 삭제하도록 session 내장 객체의 invalidate() 메서드를 작성
 	--%>
 	<%
 		String userID = (String)session.getAttribute("userID");

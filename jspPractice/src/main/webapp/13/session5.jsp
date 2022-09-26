@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<p><h4>------------------세션을 삭제하기 전------------------</h4>
 	<%--
 		세션에 저장된 속성 삭제하기
 		1) 세션에 저장된 모든 세션 속성 이름을 가져오도록 session 내장 객체의 getAttributeNames() 메서드 작성

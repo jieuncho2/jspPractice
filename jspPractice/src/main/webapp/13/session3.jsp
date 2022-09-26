@@ -9,7 +9,7 @@
 </head>
 <body>
 	<%--
-		세션에 저장된 모듣 게션 속성 이름과 속성 값 가져와 출력하기
+		세션에 저장된 모든 세션 속성 이름과 속성 값 가져와 출력하기
 		1) 세션에 저장된 모든 세션 속성 이름을 가져오도록 session 내장 객체의 getAttributeNames() 메서드 작성
 		2) Enumeration 객체의 hasMoreElements 메서드를 통해 저장된 세션 속성 이름이 있을 때까지 반복하도록 while 문을 작성
 		3) 세션 속성 이름을 가져오도록 Enumeration 객체의 nextElement() 메서드 작성
