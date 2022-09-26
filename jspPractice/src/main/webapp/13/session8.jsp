@@ -8,7 +8,11 @@
 </head>
 <body>
 	<%--
-		
+	세션 아이디와 웹 사이트에서 유지한 시간 출력하기
+	1) 고유한 세션 내장 객체의 아이디를 가져오도록 session 내장 객체의 getId() 메서드를 작성
+	2) 세션에 마지막으로 접근한 시간을 가져오도록 session 내장 객체의 getLastAcessedTime() 메서드를 작성
+	3) 세션이 생성된 시간을 가져오도록 session 내장 객체 getCreationTime() 메서드를 작성
+	4) 웹 사이트에 머문 시간을 계산하도록 작성
 	--%>
 	<%
 		String session_id = session.getId();
