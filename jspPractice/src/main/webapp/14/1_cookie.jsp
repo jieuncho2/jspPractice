@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body> 
 	<form action="1_cookie_process.jsp" method="post">
 		<p>아이디: <input type="text" name="id">
 		<p>비밀번호: <input type="text" name="passwd">

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
+	<% 
 		Cookie[] cookies = request.getCookies();
 		
 		for(int i = 0; i < cookies.length; i++){

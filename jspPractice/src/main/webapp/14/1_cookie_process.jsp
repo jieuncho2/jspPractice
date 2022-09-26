@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
+	<% 
 		String userID = request.getParameter("id");
 		String password = request.getParameter("passwd");
 	
