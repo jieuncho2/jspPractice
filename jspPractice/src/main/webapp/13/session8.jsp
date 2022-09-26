@@ -17,9 +17,13 @@
 	<%
 		String session_id = session.getId();
 		
-		long last_time = session.getLastAccessedTime();
+		// getLastAccessedTime() 해당 세션에 클라이언트가 마지막으로 request를 보낸 시간을 반환
+		long last_time = session.getLastAccessedTime(); // 단위가 1/1,000초
 		
-		long start_time = session.getCreationTime();
+		// getCreationTime(): 세션이 생성된 시간을 반환
+		// 1970년 1월 1일 0시 0분 0초부터 현재 세션이 생성된 시간까지 경과한
+		// 시간을 1/1,000초 값으로 반환
+		long start_time = session.getCreationTime(); // 단위가 1/1,000초
 		
 		long used_time = (last_time - start_time) / 60000;
 		
