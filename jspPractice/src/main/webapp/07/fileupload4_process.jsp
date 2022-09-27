@@ -12,38 +12,50 @@
 </head>
 <body>
 	<%--
-	MultipartRequest 클래스를 이용하여 파일 업로드 및 정보 출력하기
-	1) MultipartRequest 클래스를 사용하도록 page 디렉티브 태그의 import 속성 값에
-	패키지 com.oreilly.servlet.*를 작성
-	2) DefaultFileRenamePolicy 클래스 사용하도록 page 디렉티브의 import 속성 값에
-	패키지 com.oreilly.servlet.multipart.*를 작성
-	3) MultipartRequest 클래스를 생성하도록 서버 파일 경로는 "C:\\upload",
-	파일의 최대 크기는 5MB(5 * 1024 *1024B)이고
-	파일 명의 인코딩 유형은 utf-8로 설정
-	서버에 저장된 파일명 중복을 처리하기 위해 DefalutFileRenamePolicy 클래스를 사용
-	서버에 동일한 파일이 존재하면 전송된 파일명 뒤에 숫자를 덧붙여 파일명이 중복되지 않음
+	Commons-FileUpload를 이용하여 파일 업로드 및 정보 출력하기
+	1) Commons-FileUpload 패키지를 사용하도록 page 디렉티브 태그의 import 속성 값에
+	패키지 org.apache.commons.fileupload.*을 작성
+	2) 폼 페이지에서 전송된 파일을 저장할 서버의 경로를 작성
+	3) 파일 업로드를 위해 DiskFileUpload 클래스를 생성
+	4) 업로드할 파일의 최대 크기, 메모리상에 저장할 최대 크기, 업로드된 파일을 임시로 저장할 경로를 작성
+	5) 폼 페이지에서 전송된 요청 파라미터를 전달받도록 DiskFileUpload 객체 타입의 parseRequest() 메서드를 작성
+	6) 폼 페이지에서 전송된 요청 파라미터를 Iterator 클래스로 변환
+	7) 폼 페이지에서 전송된 요청 파라미터가 없을 때까지 반복하도록 Iterator 객체 타입의 hasNext() 메서드를 작성
+	8) 폼 페이지에서 전송된 요청 파라미터의 이름을 가져오도록 Iterator 객체 타입의 next() 메서드를 작성
+	9) 폼 페이지에서 전송된 요청 피라미터가 일반 데이터면 요청 피라미터의 이름과 값을 출력
+	10) 폼 페이지에서 전송된 요청 파라미터가 파일이면 요청 파라미터의 이름, 저장 파일의 이름, 파일 컨텐츠 유형, 파일 크기에 대한 정보를 출력
 	--%>
 	<%
+		// 폼 페이지에서 전송된 파일을 저장할 서버의 경로를 작성
 		String path = "C:\\upload";
 		
+		// 파일 업로드를 위해 DiskFileUpload 클래스를 생성
 		DiskFileUpload upload = new DiskFileUpload();
 		
+		// 업로드할 파일의 최대 크기, 업로드된 파일을 임시로 저장할 경로를 작성
+		upload.setSizeMax(1000000);
 		upload.setSizeMax(1000000);
 		upload.setSizeThreshold(4096);
-		upload.setRepositoryPath(path);
+		upload.setRepositoryPath(path); // 실무에서는 업로드 폴더와 임시 폴더를 다르게 함
+		// 1) 임시 폴더에 저장 후어 2) 업로드 폴더에 정상적으로 업로드되면 3) 임시 폴더에서 식제 4) 저장 실패한 파일을 볼 수 있음
 		
+		// 폼 페이지에서 전송된 요청 파라미터를 전달받도록 DiskFileUpload 객체 타입의 parseRequest() 메서드를 작성
 		List items = upload.parseRequest(request);
 		
+		// 폼 페이지에서 전송된 요청 파라미터를 Iterator 클래스로 변환
 		Iterator params = items.iterator();
 	
-		while (params.hasNext()) {
+		while (params.hasNext()) { // 폼 페이지에서 전송된 요청 파라미터가 없을 때까지 반복하도록 Iterator 객체 타입의 hasNext() 메서드를 작성
+			// 폼 페이지에서 전송된 요청 파라미터의 이름을 가져오도록 Iterator 객체 타입의 next() 메서드를 작성
 			FileItem item = (FileItem) params.next();
 			
 			if(item.isFormField()) {
+				// 9) 폼 페이지에서 전송된 요청 피라미터가 일반 데이터면 요청 피라미터의 이름과 값을 출력
 				String name = item.getFieldName();
 				String value = item.getString("utf-8");
 				out.println(name + " = " + value + "<br>");
 			} else {
+				// 폼 페이지에서 전송된 요청 파라미터가 파일이면 요청 파라미터의 이름, 저장 파일의 이름, 파일 컨텐츠 유형, 파일 크기에 대한 정보를 출력
 				String fileFieldName = item.getFieldName();
 				String fileName = item.getName();
 				String contentType = item.getContentType();
