@@ -14,7 +14,7 @@
 		if (userID.equals("admin") && password.equals("admin1234")) {
 			session.setAttribute("userID", userID);
 			
-			response.sendRedirect("2_welcome.jsp");
+			response.sendRedirect("3_page2.jsp");
 		} else {
 			out.println("추가 생성이 실패했습니다.");
 		}
