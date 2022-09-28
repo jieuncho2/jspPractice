@@ -38,7 +38,7 @@
 				if(id.equals(rId) && passwd.equals(rPasswd)) {
 					// member 테이블의 폼 페이지에서 전송된 id와 일치하는 레코드를 찾아 삭제하도록 DELETE 문을 작성
 					sql = "delete from member where id = '" + id + "' and passwd = '" + passwd + "'";
-					// DELETE 문을 실행하도록 Statement 객체의 executeQuery() 메서드를 작성
+					// Statement 객체를 생성하도록 createStatement() 메서드 작성
 					stmt = conn.createStatement();
 					// DELETE 문을 실행하도록 Statement 객체의 executeUpdate() 메서드를 작성
 					stmt.executeUpdate(sql);
