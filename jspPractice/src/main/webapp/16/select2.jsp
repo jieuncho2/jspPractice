@@ -9,6 +9,12 @@
 </head>
 <body>
 	<%@ include file="dbconn.jsp" %>
+	<table width="300" border="1">
+		<tr>
+			<th>아이디</th>
+			<th>이름</th>
+			<th>비밀번호</th>
+		</tr>
 	<%--
 	Statement 객체로 INSERT 쿼리문 실행하기
 	1) Statement 객체를 null로 초기화
@@ -19,32 +25,41 @@
 	6) 생성한 Statement 객체의 Connection 객체를 해제
 	--%>
 	<%
-		request.setCharacterEncoding("utf-8");
-		
-		String id = request.getParameter("id");
-		String passwd = request.getParameter("passwd");
-		String name = request.getParameter("name");
-		
-		Statement stmt = null;
+			ResultSet rs = null;
+			PreparedStatement pstmt = null;
 		
 		try {
-			String sql = "INSERT INTO member(id, passwd, name) VALUES('"
-					+ id + "', '" + passwd + "', '" + name + "')";
-			out.print(sql);
-			stmt = conn.createStatement();
-			stmt.executeUpdate(sql);
-			out.println("Member 테이블 삽입이 성공했습니다.");
+			String sql = "select * from member";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String id = rs.getString("id");
+				String pw = rs.getString("passwd");
+				String name = rs.getString("name");
+	%>
+	<tr>
+		<td><%= id %></td>
+		<td><%= pw %></td>
+		<td><%= name %></td>
+	</tr>
+	<%
+			}
 		} catch(SQLException ex) {
-			out.println("Member 테이블 삽입이 실패했습니다.");
+			out.println("Member 테이블 호출이 실패했습니다.<br>");
 			out.println("SQLException: " + ex.getMessage());
 		} finally {
-			if(stmt != null) {
-				stmt.close();
+			if(rs != null) {
+				rs.close();
+			}
+			if(pstmt != null) {
+				pstmt.close();
 			}
 			if(conn != null) {
 				conn.close();
 			}
 		}
 	%>
+	</table>
 </body>
 </html>

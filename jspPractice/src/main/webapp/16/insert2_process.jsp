@@ -25,21 +25,22 @@
 		String passwd = request.getParameter("passwd");
 		String name = request.getParameter("name");
 		
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		
 		try {
-			String sql = "INSERT INTO member(id, passwd, name) VALUES('"
-					+ id + "', '" + passwd + "', '" + name + "')";
-			out.print(sql);
-			stmt = conn.createStatement();
-			stmt.executeUpdate(sql);
+			String sql = "INSERT INTO member(id, passwd, name) VALUES(?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, passwd);
+			pstmt.setString(3, name);
+			pstmt.executeUpdate();
 			out.println("Member 테이블 삽입이 성공했습니다.");
 		} catch(SQLException ex) {
 			out.println("Member 테이블 삽입이 실패했습니다.");
 			out.println("SQLException: " + ex.getMessage());
 		} finally {
-			if(stmt != null) {
-				stmt.close();
+			if(pstmt != null) {
+				pstmt.close();
 			}
 			if(conn != null) {
 				conn.close();
