@@ -22,7 +22,7 @@
 	<%
 	Connection conn = null;
 	try {
-		String url = "jdbc:mariadb://localhost:3306/sample";
+		String url = "jdbc:mariadb://localhost:3306/sample2";
 		String user = "root";
 		String password = "1225";
 		
