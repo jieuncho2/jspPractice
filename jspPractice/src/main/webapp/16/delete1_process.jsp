@@ -33,7 +33,7 @@
 				String rPasswd = rs.getString("passwd");
 				
 				if(id.equals(rId) && passwd.equals(rPasswd)) {
-					sql = "delete from member set id = '" + id + "' and passwd = '" + passwd + "'";
+					sql = "delete from member where id = '" + id + "' and passwd = '" + passwd + "'";
 					
 					stmt = conn.createStatement();
 					
