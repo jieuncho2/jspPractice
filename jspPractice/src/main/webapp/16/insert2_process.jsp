@@ -10,12 +10,12 @@
 <body>
 	<%@ include file="dbconn.jsp" %>
 	<%--
-	Statement 객체로 INSERT 쿼리문 실행하기
-	1) Statement 객체를 null로 초기화
-	2) member 테이블의 각 필드에 폼 페이지에서 전송된 아이디, 비밀번호, 이름을 삽입하도록 INSERT문을 작성
-	3) Statement 객체를 생성하도록 작성
-	4) INSERT 문을 실행하도록 Statement 객체의 executeUpdate() 메서드를 작성
-	5) INSERT 문의 실행이 성공하면 메시지를 출력
+	PreparedStatement 객체로 INSERT 쿼리문 실행하기
+	1) PreparedStatement 객체를 null로 초기화
+	2) member 테이블의 id, passwd,name 필드에 정해지지 않은 값을 삽입하도록 INSERT문을 작성
+	3) PreparedStatement 객체를 생성하도록 작성
+	4) 폼 페이지에서 전송된 아이디, 비밀번호, 이름을 물음표에 설정하도록 setString() 메소드를 작성
+	5) INSERT 문을 실행하도록 PreparedStatement 객체의 executeUpdate() 메서드를 작성
 	6) 생성한 Statement 객체의 Connection 객체를 해제
 	--%>
 	<%

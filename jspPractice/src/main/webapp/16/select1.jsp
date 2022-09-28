@@ -16,13 +16,13 @@
 			<th>비밀번호</th>
 		</tr>
 	<%--
-	Statement 객체로 INSERT 쿼리문 실행하기
-	1) Statement 객체를 null로 초기화
-	2) member 테이블의 각 필드에 폼 페이지에서 전송된 아이디, 비밀번호, 이름을 삽입하도록 INSERT문을 작성
+	Statement 객체로 SELECT 쿼리문 실행 결과 값 가져오기
+	1) ResultSet, Statement 객체를 null로 초기화
+	2) member 테이블의 모든 필드 값을 가져오도록 SELECT문을 작성
 	3) Statement 객체를 생성하도록 작성
-	4) INSERT 문을 실행하도록 Statement 객체의 executeUpdate() 메서드를 작성
-	5) INSERT 문의 실행이 성공하면 메시지를 출력
-	6) 생성한 Statement 객체의 Connection 객체를 해제
+	4) SELECT 문을 실행하도록 Statement 객체의 executeQuery() 메서드를 작성
+	5) SELECT 문으로 가져온 레코트가 있을 때까지 id, passwd, name 필드 값을 가져와 출력하도록 반복해서 실행 
+	6) 생성한 객체를 해제
 	--%>
 	<%
 			ResultSet rs = null;
