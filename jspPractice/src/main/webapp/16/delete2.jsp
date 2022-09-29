@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h4>아이디, 비밀번호 인증을 이용한 데이터 삭제</h4>
-	<form method="post" action="delete1_process.jsp">
+	<form method="post" action="delete2_process.jsp">
 		<p>기존 아이디: <input type="text" name="id">
 		<p>기존 비밀번호: <input type="password" name="passwd">
 		<p><input type="submit" value="전송">
