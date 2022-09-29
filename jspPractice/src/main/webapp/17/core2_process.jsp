@@ -10,7 +10,6 @@
 <body>
 	<%
 	String number = request.getParameter("number");
-	
 	%>
 	<c:set var="number" value="<%= number %>" />
 	<c:choose>
