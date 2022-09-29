@@ -8,12 +8,8 @@
 </head>
 <body>
 	<form name="fileForm" method="post"
-	action="1_insert_process2.jsp">
-		<p>학번: <input type="text" name="num">
-		<p>학과: <input type="text" name="depart">
-		<p>이름: <input type="text" name="name">
-		<p>주소: <input type="text" name="address">
-		<p>연락서: <input type="text" name="phone">
+	action="core2_process.jsp">
+		<p>숫자: <input type="text" name="number">
 		<p><input type="submit" value="전송">
 	</form>
 </body>
