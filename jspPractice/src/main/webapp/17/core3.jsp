@@ -9,6 +9,9 @@
 </head>
 <body>
 	<h3>구구단 출력하기</h3>
+	<%--
+	구구단 출력하기
+	--%>
 	<table>
 		<c:forEach var="i" begin="1" end="9">
 			<tr>

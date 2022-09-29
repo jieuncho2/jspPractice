@@ -8,6 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%--
+	웹 브라우저 헤더를 변수에 저장하고 설정한 변수를 삭제하기
+	1) browswer 변수에 변수 값으로 header['User-Agent']를 설정하도록 <c:set> 태그를 작성
+	2) browswer 변수 값을 출력하도록 <c:out> 태그를 작성
+	3) browswer 변수 값을 삭제하도록 <c:remove> 태그를 작성
+	4) browswer 변수 값을 출력하도록 <c:out> 태그를 작성
+	--%>
 	browser 변수 값 설정
 	<c:set var="browser" value="${header['User-Agent']}" />
 	<br>
