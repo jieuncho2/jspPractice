@@ -27,6 +27,8 @@
 			String sql = "select id, passwd from member where id = ?";
 			// PreparedStatement 객체를 생성하도록 prepareStatement() 메서드 작성
 			pstmt = conn.prepareStatement(sql);
+			// 물음표에 해당하는 값을 설정하도록 setString() 메서드를 작성
+			pstmt.setString(1, id);
 			// SELECT 문을 실행하도록 PreparedStatement 객체의 executeQuery() 메서드를 작성
 			rs = pstmt.executeQuery();
 
@@ -40,6 +42,9 @@
 					sql = "delete from member where id = ? and passwd = ?";
 					// PreparedStatement 객체를 생성하도록 prepareStatement() 메서드 작성
 					pstmt = conn.prepareStatement(sql);
+					// 물음표에 해당하는 값을 설정하도록 setString() 메서드를 작성
+					pstmt.setString(1, id);
+					pstmt.setString(2, passwd);
 					// DELETE 문을 실행하도록 PreparedStatement 객체의 executeUpdate() 메서드를 작성
 					pstmt.executeUpdate();
 					out.println("Member 테이블을 삭제했습니다.");
