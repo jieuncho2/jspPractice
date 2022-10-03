@@ -10,23 +10,23 @@
 	 function checkLogin() {
 		 let form = document.loginForm;
 		 
-		 if(form.id.value.length < 4 || form.id.value.length > 12) {
-			 alert("아이디는 4~12자 이내로 입력 가능합니다!");
-			 form.id.select();
-			 return;
+		 if(form.id.value.length == "") {
+			 alert("아이디를 입력해 주세요.");
+			 form.id.focus();
+			 return false;
 		 }
-		 if(form.passwd.value.length < 4) {
-			 alert("비밀번호는 4자 이상으로 입력해야 합니다!");
-			 form.passwd.select();
-			 return;
+		 if(form.passwd.value.length == "") {
+			 alert("비밀번호를 입력해 주세요.");
+			 form.passwd.focus();
+			 return false;
 		 }
 		 
 		 form.submit();
 	 }
 </script>
 <body>
-	<!-- 폼 페이지에 입력한 데이터(아이디와 비밀번호) 값의 길이 검사하기 -->
-	<form name="loginForm" action="validation3_process.jsp" method="post">
+	<!-- 폼 페이지에 입력한 데이터(아이디와 비밀번호) 값의 유무 검사하기 -->
+	<form name="loginForm" action="validation2_process.jsp" method="post">
         <p>아이디: <input type="text" name="id">
         <p>비밀번호: <input type="password" name="passwd">
         <p><input type="button" value="전송" onclick="checkLogin()">

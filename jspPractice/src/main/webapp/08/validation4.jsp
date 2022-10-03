@@ -8,7 +8,7 @@
 </head>
 <script type="text/javascript">
 	function checkForm() {
-		var regExp = /Java/i;
+		var regExp = /Java/i; // var regExp = new regExp('java', 'i');와 같다
 		var str = document.frm.title.value;
 		var result = regExp.exec(str);
 		alert(result[0]);

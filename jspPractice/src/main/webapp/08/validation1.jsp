@@ -8,10 +8,12 @@
 </head>
 <script type="text/javascript">
 	 function CheckForm() {
-		 alert("아이디: " + document.loginForm.id.value + "\n" + "비밀번호: " + document.loginForm.passwd.value);
+		 alert("아이디: " + document.loginForm.id.value + "\n" + 
+				 "비밀번호: " + document.loginForm.passwd.value);
 	 }
 </script>
 <body>
+	<!-- 폼 페이지에서 입력한 아이디와 비밀번호 출력하기 -->
 	<form name="loginForm">
         <p>아이디: <input type="text" name="id">
         <p>비밀번호: <input type="password" name="passwd">

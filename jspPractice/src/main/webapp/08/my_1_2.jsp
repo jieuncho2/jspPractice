@@ -8,10 +8,15 @@
 </head>
 <body>
 	<form name="fileUpload" action="my_1_process.jsp" method="post" enctype="multipart/form-data">
-		<p><input type="file" name="imgFile">
-		<p><input type="button" value="전송" onclick="checkForm()">
+		<p><input type="file" name="imgFile"><span id="upinfo"></span></p>
+		<p><input type="button" value="전송" onclick="checkForm()"></p>
 	</form>
 	<script type="text/javascript">
+		const max = 10;
+		document.addEventListener('DOMContentLoad', () => {
+			document.querySelector('#upInfo').innerHTML = '업로드 사이즈는 ' + max + '메가입니다.';
+		});
+	
 		/* 업로드 파일 용량 검사 */
 		function checkForm() {
 			const checkForm = document.forms.fileUpload;

@@ -28,7 +28,7 @@
 		let id = form.id.value;
 		let name = form.name.value;
 		let passwd = form.passwd.value;
-		let phone = form.phone.value;
+		let phone = form.phone1.value + "-" + form.phone2.value + "-" + form.phone3.value;
 		let email = form.email.value;
 		
 		if(!regExpId.test(id)) {
@@ -38,34 +38,32 @@
 		}
 		if(!regExpName.test(name)) {
 			alert("이름은 한글만으로 입력해 주세요!");
-			form.name.select();
 			return;
 		}
 		if(!regExpPasswd.test(passwd)) {
 			alert("비밀번호는 숫자만으로 입력해 주세요!");
-			form.passwd.select();
 			return;
 		}
 		if(!regExpPhone.test(phone)) {
 			alert("연락처 입력을 확인해 주세요!");
-			form.phone.select();
 			return;
 		}
 		if(!regExpEmail.test(email)) {
 			alert("이메일 입력을 확인해 주세요!");
-			form.email.select();
 			return;
 		}
+		
+		form.submit();
 	}
 </script>
 <body>
-	<form name="frm">
-		<p>제목: <input type="text" name="title">
-		<p>제목: <input type="text" name="title">
-		<p>제목: <input type="text" name="title">
-		<p>제목: <input type="text" name="title">
-		<p>제목: <input type="text" name="title">
-		<input type="submit" value="전송" onclick="checkForm()">
+	<form name="Member" action="validation5_process.jsp" method="post">
+		<p>아이디: <input type="text" name="id">
+		<p>이름: <input type="text" name="name">
+		<p>비밀번호: <input type="text" name="passwd">
+		<p>연락처: <input type="text" name="phone1"><input type="text" name="phone2"><input type="text" name="phone3">
+		<p>이메일: <input type="text" name="email">
+		<p><input type="button" value="전송" onclick="checkMember()">
 	</form>
 </body>
 </html>
