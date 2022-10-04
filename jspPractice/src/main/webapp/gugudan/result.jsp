@@ -10,9 +10,9 @@
 <body>
 	<p><%
 		String num = request.getParameter("num");
-		int[] bean = (int[]) request.getAttribute("bean");
+		int[] resultArray = (int[]) request.getAttribute("gugudanModel");
 		for(int i = 0; i < 9; i++) {%>
-			<%= num %> * <%= (i + 1) %> = <%= bean[i] %><br>
+			<%= num %> * <%= (i + 1) %> = <%= resultArray[i] %><br>
 		<%	
 		}
 		%>

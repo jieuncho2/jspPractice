@@ -24,11 +24,12 @@ public class GugudanController extends HttpServlet {
 		
 		resp.setContentType("text/html; charset-utf-8");
 		
-		int num =  Integer.parseInt(req.getParameter("num"));
+		String num = req.getParameter("num");
+		int numInt =  Integer.parseInt(num);
 		
-		GugudanModel bean = new GugudanModel();
-		int[] arrayResult = bean.process(num);
-		req.setAttribute("bean", arrayResult);
+		GugudanModel gugudanModel = new GugudanModel();
+		int[] resultArray = gugudanModel.process(numInt);
+		req.setAttribute("gugudanModel", resultArray);
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("result.jsp");
 		dispatcher.forward(req, resp);
