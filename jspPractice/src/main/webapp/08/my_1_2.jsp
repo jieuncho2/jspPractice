@@ -13,7 +13,7 @@
 	</form>
 	<script>
 		const max = 10;
-		document.addEventListener('DOMContentLoad', () => {
+		document.addEventListener('DOMContentLoaded', () => {
 			document.querySelector('#upInfo').innerHTML = '업로드 사이즈는 ' + max + '메가입니다.';
 		});
 	
