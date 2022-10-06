@@ -21,4 +21,13 @@
 		<servlet-name>GugudanController</servlet-name>
 		<url-pattern>/gugudan/GugudanController</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>BoardController</servlet-name>
+		<servlet-class>borad.BoardController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BoardController</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
 </web-app>

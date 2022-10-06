@@ -28,7 +28,7 @@
 		</div>
 	</div>
 	
-	<div class="container">
+	<div class="container" align="center">
 		<div class="col-md-4 col-md-offset-4">
 			<h3 class="form-sign-heading">Please sign in</h3>
 			<%
@@ -44,13 +44,13 @@
 			<div class="form-group">
 				<label for="inputUserName" class="sr-only">User Name</label>
 				<div class="col-sm-3">
-					<input name="id" type="text" class="form-control" placeholder="Id">
+					<input name="id" type="text" class="form-control" placeholder="Id" required autofocus>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2">비밀번호</label>
 				<div class="col-sm-3">
-					<input name="password" type="password" class="form-control" placeholder="Password">
+					<input name="password" type="password" class="form-control" placeholder="Password" required>
 				</div>
 			</div>
 			<button class="btn btn btn-lg btn-success btn-block" type="submit">로그인</button>	
