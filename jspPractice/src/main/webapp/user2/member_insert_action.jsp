@@ -1,4 +1,5 @@
-<%@page import="java.sql.*"%>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.time.LocalDateTime" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,32 +9,28 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@ include file="dbconn.jsp" %>
 	<%
-		Connection conn = null;
-	
-		String url = "jdbc:mariadb://localhost:3306/sample3";
-		String user = "root";
-		String password = "1225";
-		
-		Class.forName("org.mariadb.jdbc.Driver");
-		conn = DriverManager.getConnection(url, user, password);
-
 		request.setCharacterEncoding("utf-8");
 		
 		String id = request.getParameter("id");
 		String passwd = request.getParameter("passwd");
 		String name = request.getParameter("name");
+		String insertDate = LocalDateTime.now().toString();
 		
 		PreparedStatement pstmt = null;
 		
 		try {
-			String sql = "INSERT INTO member(memberID, password, name) VALUES(?,?,?)";
+			String sql = "INSERT INTO member(memberID, password, name, InsertDate) VALUES(?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
+			out.println(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, passwd);
 			pstmt.setString(3, name);
+			pstmt.setString(4, insertDate);
 			pstmt.executeUpdate();
-			out.println("Member 테이블 삽입이 성공했습니다.");
+			
+			response.sendRedirect("member_login.jsp");
 		} catch(SQLException ex) {
 			out.println("Member 테이블 삽입이 실패했습니다.");
 			out.println("SQLException: " + ex.getMessage());

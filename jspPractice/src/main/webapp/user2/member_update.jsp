@@ -29,6 +29,7 @@
 	</script>
 </head>
 <body>
+	<h3>회원 정보 수정</h3>
 	<form name="join" method="post" action="member_update_action.jsp">
 		<p>비밀번호: <input type="password" name="passwd">
 		<p>비밀번호 확인: <input type="password" name="passwd2">

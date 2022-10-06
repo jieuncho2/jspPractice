@@ -24,6 +24,7 @@
 	</script>
 </head>
 <body>
+	<h3>로그인</h3>
 	<form name="join" method="post" action="member_login_action.jsp">
 		<p>아이디: <input type="text" name="id">
 		<p>비밀번호: <input type="password" name="passwd">

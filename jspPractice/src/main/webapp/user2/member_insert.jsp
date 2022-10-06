@@ -39,6 +39,7 @@
 	</script>
 </head>
 <body>
+	<h3>회원 가입</h3>
 	<form name="join" method="post" action="member_insert_action.jsp">
 		<p>아이디: <input type="text" name="id">
 		<p>비밀번호: <input type="password" name="passwd">
