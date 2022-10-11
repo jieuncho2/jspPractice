@@ -24,7 +24,7 @@
 	
 	<servlet>
 		<servlet-name>BoardController</servlet-name>
-		<servlet-class>borad.BoardController</servlet-class>
+		<servlet-class>board.BoardController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>BoardController</servlet-name>
