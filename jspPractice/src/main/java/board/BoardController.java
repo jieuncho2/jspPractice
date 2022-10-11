@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class BoardController extends HttpServlet {
-	private static final int LISTCOUNT = 5;
+	private static final int LISTCOUNT = 5; 
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
