@@ -26,33 +26,35 @@ public class BoardController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
 		
+		System.out.println(command);
+		
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 		
-		if(command.equals("/BoardListAction.do")) {
+		if(command.equals("/BoardListAction.do")) { // 등록된 글 목록 페이지 출력하기. jsp로 포워딩.
 			requestBoardList(request);
 			RequestDispatcher rd = request.getRequestDispatcher("./sample/board/list.jsp");
 			rd.forward(request, response);
-		} else if(command.equals("/BoardWriteForm.do")) {
+		} else if(command.equals("/BoardWriteForm.do")) { // 글 등록 페이지 출력하기. jsp로 포워딩.
 			requestLoginName(request);
 			RequestDispatcher rd = request.getRequestDispatcher("./sample/board/writeForm.jsp");
 			rd.forward(request, response);
-		} else if(command.equals("/BoardWriteAction.do")) {
+		} else if(command.equals("/BoardWriteAction.do")) { // 새로운 글 등록하기. jsp로 포워딩.
 			requestBoardWrite(request);
 			RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
 			rd.forward(request, response);
-		} else if(command.equals("/BoardViewAction.do")) {
+		} else if(command.equals("/BoardViewAction.do")) { // 선택된 상세 페이지 가져오기. 뷰로 이동.
 			requestBoardView(request);
 			RequestDispatcher rd = request.getRequestDispatcher("/BoardView.do");
 			rd.forward(request, response);
-		} else if(command.equals("/BoardView.do")) {
+		} else if(command.equals("/BoardView.do")) { // 글 상세 페이지 출력하기. jsp로 포워딩.
 			RequestDispatcher rd = request.getRequestDispatcher("./sample/board/view.jsp");
 			rd.forward(request, response);
-		} else if(command.equals("/BoardUpdateAction.do")) {
+		} else if(command.equals("/BoardUpdateAction.do")) { // 선택된 글의 수정. 수정 후 목록으로 이동.
 			requestBoardUpdate(request);
 			RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
 			rd.forward(request, response);
-		} else if(command.equals("/BoardDeleteAction.do")) {
+		} else if(command.equals("/BoardDeleteAction.do")) { // 선택된 글 삭제하기. 삭제 후 목록으로 이동.
 			requestBoardDelete(request);
 			RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
 			rd.forward(request, response);
@@ -88,6 +90,8 @@ public class BoardController extends HttpServlet {
 			Math.floor(total_page);
 			total_page = total_page + 1;
 		}
+		int total_number = total_record - ((pageNum - 1) + limit);
+		System.out.println(total_number);
 		
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("total_page", total_page);
@@ -136,9 +140,10 @@ public class BoardController extends HttpServlet {
 		
 		BoardDTO board = new BoardDTO();
 		board = dao.getBoardByNum(num);
-		
+		System.out.println(num);
+		System.out.println(pageNum);
 		request.setAttribute("num", num);
-		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("page", pageNum);
 		request.setAttribute("board", board);
 	}
 	

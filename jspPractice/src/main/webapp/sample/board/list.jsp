@@ -33,7 +33,7 @@
 		<form action="<c:url value="./BoardListAction.do"/>" method="post">
 			<div>
 				<div class="text-right">
-					<span class="badge badge-success">전체 <%=total_record%>건	</span>
+					<span class="badge-success">전체 <%=total_record%>건	</span>
 				</div>
 			</div>
 			<div style="padding-top: 50px">

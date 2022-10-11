@@ -22,6 +22,7 @@ public class BoardDAO {
 	}
 	
 	public int getListCount(String items, String text) {
+		/* board 테이블의 레코드 개수. 페이지 계산을 위해서 필요. */
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -31,9 +32,9 @@ public class BoardDAO {
 		String sql;
 		
 		if(items == null && text == null) {
-			sql = "SELECT * FROM board";
+			sql = "SELECT count(*) FROM board";
 		} else {
-			sql = "SELECT * FROM board WHERE " + items + "LIKE '%" + text + "%'";			
+			sql = "SELECT count(*) FROM board WHERE " + items + "LIKE '%" + text + "%'";			
 		}
 		
 		try {
@@ -63,11 +64,12 @@ public class BoardDAO {
 				throw new RuntimeException(ex.getMessage());
 			}
 		}
-		
+		System.out.println(cnt);
 		return cnt;
 	}
 	
 	public ArrayList<BoardDTO> getBoardList(int page, int limit, String items, String text) {
+		/* board 테이블의 레코드 가져오기 */
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -80,12 +82,12 @@ public class BoardDAO {
 		String sql;
 		
 		if(items == null && text == null) {
-			sql = "SELECT * FROM board ORDER BY num DESC";
+			sql = "SELECT * FROM board WHERE name LIKE '%name%' ORDER BY num DESC LIMIT 0, 5";
 		} else {
 			sql = "SELECT * FROM board WHERE " + items + "LIKE '%" + text + "%' ORDER BY num DESC";		
 		}
 		sql = sql + " LIMIT " + start + ", " + limit;
-		
+		System.out.println(sql);
 		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
 		
 		try {
@@ -131,6 +133,8 @@ public class BoardDAO {
 	}
 	
 	public String getLoginNameById(String id) {
+		/* member 테이블에서 로그인한 id의 이름을 테이블에서 가져오기 */
+		/* 글쓰기 페이지에서 사용 */
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -173,6 +177,7 @@ public class BoardDAO {
 	}
 	
 	public void insertBoard(BoardDTO board) {
+		/* board 테이블에 새로운 글 삽입하기 */
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
@@ -190,6 +195,8 @@ public class BoardDAO {
 			pstmt.setString(6, board.getRegist_day());
 			pstmt.setInt(7, board.getHit());
 			pstmt.setString(8, board.getIp());
+			
+			pstmt.execute();
 			
 		} catch (Exception ex) {
 			// TODO: handle exception
@@ -210,6 +217,7 @@ public class BoardDAO {
 	}
 	
 	public void updateHit(int num) {
+		/* 선택된 글의 조회수 증가하기. view 페이지에서 사용. */
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -224,14 +232,13 @@ public class BoardDAO {
 			int hit = 0;
 			
 			if(rs.next()) {
-				hit = rs.getInt("hit");
+				hit = rs.getInt("hit") + 1;
+				sql = "UPDATE board SET hit = ? WHERE num = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, hit);
+				pstmt.setInt(2, num);
+				pstmt.executeUpdate();
 			}
-			
-			sql = "UPDATE board SET hit = ? WHERE num = ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, hit);
-			pstmt.setInt(2, num);
-			rs = pstmt.executeQuery();
 			
 		} catch (Exception ex) {
 			// TODO: handle exception
@@ -261,7 +268,7 @@ public class BoardDAO {
 		BoardDTO board = null;
 		
 		updateHit(num);
-		String sql = "SELECT hit FROM board WHERE num = ?";
+		String sql = "SELECT * FROM board WHERE num = ?";
 		
 		try {
 			conn = DBConnection.getConnection();
