@@ -104,6 +104,9 @@ public class BoardController extends HttpServlet {
 	}
 	
 	public void requestLoginName(HttpServletRequest request) {
+		/* 로그인한 아이디의 이름 들고오기. 글쓰기에서 사용 */
+		
+		// 세션에서 들고오는 걸 추천
 		String id = request.getParameter("id");
 		
 		BoardDAO dao = BoardDAO.getInstance();
