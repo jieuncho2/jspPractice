@@ -37,7 +37,7 @@ public class BoardDAO {
 		
 		if(items == null && text == null) { // 검색이 없는 경우
 		} else { // 검색이 있는 경우
-			sql = sql + "WHERE " + items + "LIKE '%" + text + "%'";			
+			sql = sql + " WHERE " + items + " LIKE '%" + text + "%'";			
 		}
 		
 		try {
@@ -92,7 +92,7 @@ public class BoardDAO {
 		if(items == null && text == null) {  // 검색이 없는 경우
 			sql = "SELECT * FROM board ORDER BY num DESC";
 		} else {  // 검색이 있는 경우
-			sql = "SELECT * FROM board WHERE " + items + "LIKE '%" + text + "%' ORDER BY num DESC";		
+			sql = "SELECT * FROM board WHERE " + items + " LIKE '%" + text + "%' ORDER BY num DESC";		
 		}
 		sql = sql + " LIMIT " + start + ", " + limit;
 		System.out.println(sql);
