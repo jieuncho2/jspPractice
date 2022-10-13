@@ -5,7 +5,7 @@
 <%
 	Connection conn =null;
 	
-	String url = "jdbc:mariadb://localhost:3306/sample4";
+	String url = "jdbc:mariadb://localhost:3306/221013";
 	String user = "root";
 	String password = "1225";
 	
