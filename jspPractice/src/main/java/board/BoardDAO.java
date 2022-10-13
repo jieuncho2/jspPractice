@@ -105,8 +105,12 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 			
 			// Resultset.absolute(int index): ResultSet 커서를 원하는 위치(Index)의 검색행으로 이동하는 메서드
+			int total_record = getListCount(items, text);
+			int total_number = total_record - ((page - 1) * limit);
 			while(rs.next()) {
 				BoardDTO board = new BoardDTO();
+//				board.setNum(total_number--);
+//				total_number = total_number - 1;
 				board.setNum(rs.getInt("num"));
 				board.setId(rs.getString("id"));
 				board.setName(rs.getString("name"));
@@ -272,6 +276,8 @@ public class BoardDAO {
 	}
 	
 	public BoardDTO getBoardByNum(int num) {
+		/* 선택된 번호의 글 상세 내용 가져오기. view 페이지에서 사용 */
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

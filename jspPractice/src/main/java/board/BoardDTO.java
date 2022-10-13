@@ -15,7 +15,7 @@ public class BoardDTO {
 	private String regist_day;
 	private int hit;
 	private String ip;
-		
+	
 	public BoardDTO() {
 		super();
 	}

@@ -7,6 +7,7 @@
 	int total_record = ((Integer) request.getAttribute("total_record")).intValue();
 	int pageNum = ((Integer) request.getAttribute("pageNum")).intValue();
 	int total_page = ((Integer) request.getAttribute("total_page")).intValue();
+	int total_number = ((Integer) request.getAttribute("total_number")).intValue();
 %>
 <html>
 <head>
@@ -50,7 +51,7 @@
 							BoardDTO notice = (BoardDTO) boardList.get(j);
 					%>
 					<tr>
-						<td><%=notice.getNum()%></td>
+						<td><%=total_number--%></td>
 						<td><a href="./BoardViewAction.do?num=<%=notice.getNum()%>&pageNum=<%=pageNum%>"><%=notice.getSubject()%></a></td>
 						<td><%=notice.getRegist_day()%></td>
 						<td><%=notice.getHit()%></td>

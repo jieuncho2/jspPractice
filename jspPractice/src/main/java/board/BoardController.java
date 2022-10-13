@@ -93,8 +93,9 @@ public class BoardController extends HttpServlet {
 			Math.floor(total_page);
 			total_page = total_page + 1;
 		}
-		int total_number = total_record - ((pageNum - 1) + limit);
-		// System.out.println(total_number);
+		int total_number = total_record - ((pageNum - 1) * limit);
+		System.out.println(total_number);
+		request.setAttribute("total_number", total_number);
 		
 		request.setAttribute("pageNum", pageNum); // 페이지 번호
 		request.setAttribute("total_page", total_page); // 전체 페이지
