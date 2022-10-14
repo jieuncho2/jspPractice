@@ -393,4 +393,46 @@ public class BoardDAO {
 		}
 	}
 	
+	
+	public String getIdByNum(int num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String id = null;
+		String sql = "SELECT id FROM board WHERE num = ?";
+		
+		try {
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				id = rs.getString("id");
+			}
+			return id;
+			
+		} catch (Exception ex) {
+			// TODO: handle exception
+			System.err.println("getBoardByNum() 에러: " + ex);
+		} finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (Exception ex) {
+				// TODO: handle exception
+				throw new RuntimeException(ex.getMessage());
+			}
+		}
+		
+		return null;
+	}
 }

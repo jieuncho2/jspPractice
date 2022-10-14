@@ -48,8 +48,18 @@ public class BoardController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/BoardView.do");
 			rd.forward(request, response);
 		} else if(command.equals("/BoardView.do")) { // 글 상세 페이지 출력하기. jsp로 포워딩.
-			RequestDispatcher rd = request.getRequestDispatcher("./sample/board/view.jsp");
-			rd.forward(request, response);
+//			String loginId = requestLoginId(request);
+//			String boardId = requestBoardId(request);
+			String loginId = (String) request.getParameter("id");
+			BoardDTO notice = (BoardDTO) request.getAttribute("board");
+			String boardId = notice.getId();
+			if(loginId.equals(boardId)) {
+				RequestDispatcher rd = request.getRequestDispatcher("./sample/board/updateForm.jsp");
+				rd.forward(request, response);				
+			} else {
+				RequestDispatcher rd = request.getRequestDispatcher("./sample/board/view.jsp");
+				rd.forward(request, response);		
+			}
 		} else if(command.equals("/BoardUpdateAction.do")) { // 선택된 글의 수정. 수정 후 목록으로 이동.
 			requestBoardUpdate(request);
 			RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
@@ -57,6 +67,7 @@ public class BoardController extends HttpServlet {
 		} else if(command.equals("/BoardDeleteAction.do")) { // 선택된 글 삭제하기. 삭제 후 목록으로 이동.
 			requestBoardDelete(request);
 			RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
+			
 			rd.forward(request, response);
 		}
 		
@@ -109,6 +120,7 @@ public class BoardController extends HttpServlet {
 		
 		// 세션에서 들고오는 걸 추천
 		String id = request.getParameter("id");
+		System.out.println(id);
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		
@@ -176,4 +188,17 @@ public class BoardController extends HttpServlet {
 		dao.deleteBoard(num);
 	}
 
+	public String requestBoardId(HttpServletRequest request) {
+		int num = Integer.parseInt(request.getParameter("num"));
+		BoardDAO dao = BoardDAO.getInstance();
+		String boardId = dao.getIdByNum(num);
+		System.out.println("boardId: " + boardId);
+		return boardId;
+	}
+	
+	public String requestLoginId(HttpServletRequest request) {
+		String loginId = (String) request.getParameter("id");
+		System.out.println("loginId: " + loginId);
+		return loginId;
+	}
 }
