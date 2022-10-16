@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final int LISTCOUNT = 5; // 페이지당 게시물 수
+	private static final int PAGECOUNT = 10; // 페이지블록당 페이지 개수
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -81,6 +82,7 @@ public class BoardController extends HttpServlet {
 		
 		int pageNum = 1; // 페이지 번호가 전달이 안 되면 1 페이지
 		int limit = LISTCOUNT; // 페이지당 게시물 수
+		int pagelimit = PAGECOUNT;
 		
 		if(request.getParameter("pageNum") != null) { // 페이지 번호가 전달이 된 경우
 			pageNum = Integer.parseInt(request.getParameter("pageNum"));
@@ -110,16 +112,30 @@ public class BoardController extends HttpServlet {
 		} else {
 			total_page = total_record / limit;
 			Math.floor(total_page);
-			total_page = total_page + 1;
+			total_page = total_page + 1; 
 		}
 		int total_number = total_record - ((pageNum - 1) * limit);
-		System.out.println(total_number);
-		request.setAttribute("total_number", total_number);
+//		System.out.println(total_number);
+		int total_block = total_page % pagelimit == 0 ? total_page / pagelimit : total_page / pagelimit + 1;
+		int blockNum = ((pageNum - 1) / pagelimit) + 1;		
+		if(request.getParameter("blockNum") != null) { // 페이지 번호가 전달이 된 경우
+			blockNum = Integer.parseInt(request.getParameter("blockNum"));
+		}
+		int block_start = ((blockNum -1 ) * pagelimit) + 1;
+		int block_end = pagelimit * blockNum;
+		if(blockNum == total_block && total_page % pagelimit != 0) {
+			block_end = total_page;
+		}
 		
+		request.setAttribute("total_number", total_number);
 		request.setAttribute("pageNum", pageNum); // 페이지 번호
 		request.setAttribute("total_page", total_page); // 전체 페이지
 		request.setAttribute("total_record", total_record); // 전체 게시물 수
 		request.setAttribute("boardlist", boardlist); // 현재 페이지에 해당하는 목록 데이터
+		request.setAttribute("total_block", total_block); // 현재 페이지에 해당하는 목록 데이터
+		request.setAttribute("blockNum", blockNum); // 현재 페이지에 해당하는 목록 데이터
+		request.setAttribute("block_start", block_start); // 현재 페이지에 해당하는 목록 데이터		
+		request.setAttribute("block_end", block_end); // 현재 페이지에 해당하는 목록 데이터		
 		
 	}
 	

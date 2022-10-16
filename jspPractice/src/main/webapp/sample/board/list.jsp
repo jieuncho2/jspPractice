@@ -10,6 +10,10 @@
 	int total_number = ((Integer) request.getAttribute("total_number")).intValue();
 	String items = (String)request.getAttribute("items") != null ? (String)request.getAttribute("items"):"";
 	String text = (String)request.getAttribute("text") != null ? (String)request.getAttribute("text"):"";
+	int blockNum = ((Integer) request.getAttribute("blockNum")).intValue();
+	int block_start = ((Integer) request.getAttribute("block_start")).intValue();
+	int block_end = ((Integer) request.getAttribute("block_end")).intValue();
+	int total_block = ((Integer) request.getAttribute("total_block")).intValue();
 %>
 <html>
 <head>
@@ -67,8 +71,11 @@
 			<c:set var="items" value="<%= items %>" />
 			<c:set var="text" value="<%= text %>" />
 			<div align="center">
+				<c:if test="${block_start > 1}">
+					<a href="<c:url value="./BoardListAction.do?blockNum=${blockNum - 1}&pageNum=${pageNum}" />">이전</a>
+				</c:if>
 				<c:set var="pageNum" value="<%=pageNum%>" />
-				<c:forEach var="i" begin="1" end="<%=total_page%>">
+				<c:forEach var="i" begin="<%=block_start%>" end="<%=block_end%>">
 					<a href="<c:url value="./BoardListAction.do?pageNum=${i}&items=${ items }&text=${ text }" /> ">
 						<c:choose>
 							<c:when test="${pageNum == i}">
@@ -76,11 +83,13 @@
 							</c:when>
 							<c:otherwise>
 								<font color='4C5317'> [${i}]</font>
-
 							</c:otherwise>
 						</c:choose>
 					</a>
 				</c:forEach>
+				<c:if test="${blockNum < total_block}" >
+					<a href="<c:url value="./BoardListAction.do?blockNum=${blockNum + 1}&pageNum=${pageNum}" />">다음</a>
+				</c:if>
 			</div>
 			<div align="left">
 				<table>
