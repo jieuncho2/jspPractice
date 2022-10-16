@@ -89,6 +89,14 @@ public class BoardController extends HttpServlet {
 		String items = request.getParameter("items"); // 검색 필드
 		String text = request.getParameter("text"); // 검색어
 		
+		// 빈 문자열일 경우 null로 처리
+		items = items != null && items.isEmpty() ? null : items;
+		text = text != null && text.isEmpty() ? null : text;
+		
+		// reqest로 값을 넘겨줌
+		request.setAttribute("items", items);
+		request.setAttribute("text", text);
+		
 		int total_record = dao.getListCount(items, text); // 전체 게시물 수
 		
 		boardlist = dao.getBoardList(pageNum, limit, items, text); // 현재 페이지에 해당하는 목록 데이터 가져오기

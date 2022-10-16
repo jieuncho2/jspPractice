@@ -38,6 +38,7 @@
 				<label class="col-sm-2">아이디</label>
 				<div class="col-sm-3">
 					<input name="id" type="text" class="form-control" placeholder="id">
+					<input name="btnIsDuplication" type="button" value="아이디 중복 검사">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -117,6 +118,16 @@
 				</div>
 			</div>
 		</form>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const btnIsDuplication = document.querySelector('input[name=btnIsDuplication]');
+				const newMember = document.newMember;
+				btnIsDuplication.addEventListener('click', () => {
+					const id = newMember.id.value;
+					window.open("popupIDCheck.jsp?id=" + id, "IDCheck", "width = 500, height = 500, top = 100, left = 200, location = no");
+				});
+			});
+		</script>
 	</div>
 	<%@ include file="../inc/footer.jsp" %>
 </body>

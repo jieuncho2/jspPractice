@@ -8,6 +8,8 @@
 	int pageNum = ((Integer) request.getAttribute("pageNum")).intValue();
 	int total_page = ((Integer) request.getAttribute("total_page")).intValue();
 	int total_number = ((Integer) request.getAttribute("total_number")).intValue();
+	String items = (String)request.getAttribute("items") != null ? (String)request.getAttribute("items"):"";
+	String text = (String)request.getAttribute("text") != null ? (String)request.getAttribute("text"):"";
 %>
 <html>
 <head>
@@ -62,10 +64,12 @@
 					%>
 				</table>
 			</div>
+			<c:set var="items" value="<%= items %>" />
+			<c:set var="text" value="<%= text %>" />
 			<div align="center">
 				<c:set var="pageNum" value="<%=pageNum%>" />
 				<c:forEach var="i" begin="1" end="<%=total_page%>">
-					<a href="<c:url value="./BoardListAction.do?pageNum=${i}" /> ">
+					<a href="<c:url value="./BoardListAction.do?pageNum=${i}&items=${ items }&text=${ text }" /> ">
 						<c:choose>
 							<c:when test="${pageNum == i}">
 								<font color='4C5317'><b> [${i}]</b></font>
@@ -86,7 +90,7 @@
 								<option value="subject">제목에서</option>
 								<option value="content">본문에서</option>
 								<option value="name">글쓴이에서</option>
-						</select> <input name="text" type="text" /> <input type="submit" id="btnAdd" class="btn btn-primary " value="검색 " />
+						</select> <input name="text" type="text" value="<%= text %>" /> <input type="submit" id="btnAdd" class="btn btn-primary " value="검색 " />
 						</td>
 						<td width="100%" align="right">
 							<a href="#" onclick="checkForm(); return false;" class="btn btn-primary">&laquo;글쓰기</a>
