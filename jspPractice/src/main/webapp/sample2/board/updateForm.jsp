@@ -25,7 +25,7 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">
-				게시판
+				 수정 게시판
 			</h1>
 		</div>
 	</div>
