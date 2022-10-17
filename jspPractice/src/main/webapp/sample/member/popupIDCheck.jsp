@@ -28,7 +28,7 @@
 				동일한 아이디가 있습니다.
 			</c:when>
 			<c:otherwise>
-				동일한 아이디가 습니다.
+				동일한 아이디가 없습니다.
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>

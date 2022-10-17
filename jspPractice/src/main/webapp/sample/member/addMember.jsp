@@ -38,7 +38,9 @@
 				<label class="col-sm-2">아이디</label>
 				<div class="col-sm-3">
 					<input name="id" type="text" class="form-control" placeholder="id">
-					<input name="btnIsDuplication" type="button" value="아이디 중복 검사">
+					<span class="idCheck"></span>
+					<br><input name="btnIsDuplication" type="button" value="팝업 아이디 중복 확인">
+					<br><input name="btnIsDuplication2nd" type="button" value="ajax 아이디 중복 확인">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -119,15 +121,67 @@
 			</div>
 		</form>
 		<script>
-			document.addEventListener('DOMContentLoaded', () => {
-				const btnIsDuplication = document.querySelector('input[name=btnIsDuplication]');
-				const newMember = document.newMember;
-				btnIsDuplication.addEventListener('click', () => {
-					const id = newMember.id.value;
-					window.open("popupIDCheck.jsp?id=" + id, "IDCheck", "width = 500, height = 500, top = 100, left = 200, location = no");
-				});
-			});
-		</script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnIsDuplication = document.querySelector('input[name=btnIsDuplication]');
+            const btnIsDuplication2nd = document.querySelector('input[name=btnIsDuplication2nd]');
+            const inputID = document.querySelector('input[name=id]');
+            const newMember = document.newMember;
+            
+            const xhr = new XMLHttpRequest();
+            
+            btnIsDuplication.addEventListener('click', () => {
+                const id = newMember.id.value;
+                window.open("popupIDCheck.jsp?id=" + id, "IDCheck", "width = 500, height = 500, top = 100, left = 200, location = no");
+            });
+
+            btnIsDuplication.addEventListener('click', () => {
+                const id = newMember.id.value;
+                xhr.open('GET', 'ajaxIDCheck.jsp?id=' + id);
+                xhr.send();
+
+                xhr.onreadystatechange = () => {
+                    if(xhr.readyState !== XMLHttpRequest.DONE) return;
+
+                    if(xhr.status === 200) {
+                        const resp = xhr.response.trim();
+                        console.log(resp);
+                        if(resp === 'true') {
+ ;                          alert('동일한 아이디가 있습니다.');
+                        } else {
+                            alert('동일한 아이디가 없습니다.');
+                        }
+                    } else {
+                        console.error('Error', xhr.status, xhr.statusText);
+                    }
+                }
+            });
+
+            inputID.addEventListener('keyup', () => {
+                const id = newMember.id.value;
+                const idCheck = document.querySelector('.idCheck');
+                xhr.open('GET', 'ajaxIDCheck.jsp?id=' + id);
+                xhr.send();
+
+                xhr.onreadystatechange = () => {
+                    if(xhr.readyState !== XMLHttpRequest.DONE) return;
+
+                    if(xhr.status === 200) {
+                        const resp = xhr.response.trim();
+                        console.log(resp);
+                        if(resp === 'true') {
+ ;                          idCheck.style.color = 'red';
+                            idCheck.innerHTML = '동일한 아이디가 있습니다.'
+                        } else {
+                            idCheck.style.color = 'red';
+                            idCheck.innerHTML = '동일한 아이디가 없습니다.'
+                        }
+                    } else {
+                        console.error('Error', xhr.status, xhr.statusText);
+                    }
+                }
+            });
+        });
+    </script>
 	</div>
 	<%@ include file="../inc/footer.jsp" %>
 </body>
