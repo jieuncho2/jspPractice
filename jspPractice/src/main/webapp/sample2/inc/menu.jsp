@@ -38,7 +38,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 				</c:choose>
 				<li class="nav-item">
 					<a class="nav-link" href="<c:url value="/BoardListAction.do?pageNum=1"/>">고객센터</a></li>
-					<a class="nav-link" href="<c:url value="/BoardListAction.do?pageNum=1"/>"  onclick="checkForm(); return false;">장바구니</a></li>
+					<a class="nav-link" href="<c:url value="/sample/shop/cart.jsp"/>">장바구니</a></li>
 			</ul>
 		</div>
 	</div>
@@ -47,7 +47,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 	<div class="container">
 		<div class="navbar-header">
 			<ul class="navbar-nav mr-auto">
-				<a class="nav-link" href="<c:url value="/sample/member/logoutMember.jsp"/>">메뉴</a></li>
+				<a class="nav-link" href="<c:url value="/sample/shop/list.jsp"/>">메뉴</a></li>
 			</ul>
 		</div>
 	</div>
