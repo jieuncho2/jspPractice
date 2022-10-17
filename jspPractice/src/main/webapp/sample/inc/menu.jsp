@@ -4,20 +4,11 @@
 <%
 String sessionId = (String) session.getAttribute("sessionId");
 %>
-<link rel="stylesheet" href="/221013/sample/css/bootstrap.min.css" />
-<script>
-	function checkForm() {
-		if (${sessionId==null}) {
-			alert("로그인 해주세요.");
-			return false;
-		}
-		location.href = "./BoardWriteForm.do?id=${sessionId}"
-	}
-</script>
+<link rel="stylesheet" href="/jsp_basic/sample/css/bootstrap.min.css" />
 <nav class="navbar navbar-expand navbar-dark bg-dark">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="/221013/sample/other/welcome.jsp">221013</a>
+			<a class="navbar-brand" href="/jsp_basic/sample/other/welcome.jsp">Home</a>
 		</div>
 		<div>
 			<ul class="navbar-nav mr-auto">
@@ -37,17 +28,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 					</c:otherwise>
 				</c:choose>
 				<li class="nav-item">
-					<a class="nav-link" href="<c:url value="/BoardListAction.do?pageNum=1"/>">고객센터</a></li>
-					<a class="nav-link" href="<c:url value="/sample/shop/cart.jsp"/>">장바구니</a></li>
-			</ul>
-		</div>
-	</div>
-</nav>
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-	<div class="container">
-		<div class="navbar-header">
-			<ul class="navbar-nav mr-auto">
-				<a class="nav-link" href="<c:url value="/sample/shop/list.jsp"/>">메뉴</a></li>
+					<a class="nav-link" href="<c:url value="/BoardListAction.do?pageNum=1"/>">게시판</a></li>
 			</ul>
 		</div>
 	</div>
