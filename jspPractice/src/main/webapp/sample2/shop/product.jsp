@@ -25,20 +25,17 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h3><%=product.getPname() %></h3>
-				<p><%=product.getDescription() %>
+				<h3><%= product.getpName() %></h3>
+				<p><%= product.getDescription() %>
 				<p> <b>상품 코드 : </b><span class="badge badge-danger">
-				<%=product.getProductId() %></span>
-				<p> <b>제조사</b> : <%=product.getManufacturer() %>
-				<p> <b>분류</b> : <%=product.getCategory() %>
-				<p> <b>재고 수</b> : <%=product.getUnitsInStock() %>
+				<%= product.getProductId() %></span>
 				<h4><%=product.getUnitPrice() %>원</h4>
-				<p> <a href="#" class="btn btn-info"> 상품 주문 &raquo;</a>
-					<a href="./products.jsp" class="btn btn-secondary">상품
+				<p> <a href="#" class="btn btn-info">장바구니에 담기 &raquo;</a>
+					<a href="./list.jsp" class="btn btn-secondary">상품
 					 목록 &raquo;</a>
 			</div>
 		</div>
 	</div>
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="../inc/footer.jsp"/>
 </body>
 </html>

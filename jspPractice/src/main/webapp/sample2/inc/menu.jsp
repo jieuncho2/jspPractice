@@ -11,7 +11,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 			alert("로그인 해주세요.");
 			return false;
 		}
-		location.href = "./BoardWriteForm.do?id=${sessionId}"
+		location.href = "/221013/sample/shop/cart.jsp?id=${sessionId}"
 	}
 </script>
 <nav class="navbar navbar-expand navbar-dark bg-dark">
@@ -38,7 +38,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 				</c:choose>
 				<li class="nav-item">
 					<a class="nav-link" href="<c:url value="/BoardListAction.do?pageNum=1"/>">고객센터</a></li>
-					<a class="nav-link" href="<c:url value="/sample/shop/cart.jsp"/>">장바구니</a></li>
+					<a class="nav-link" href="<c:url value="/sample/shop/cart.jsp"/>"  onclick="checkForm(); return false;">장바구니</a></li>
 			</ul>
 		</div>
 	</div>
