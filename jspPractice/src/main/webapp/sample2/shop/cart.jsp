@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="shop.Cart"%>
+<%@ page import="shop.CartDAO"%>
+<%@ include file="../inc/DBConnSqlTag.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/bootstrap.min.css" />
 <title>장바구니</title>
 </head>
 <body>
@@ -15,6 +18,10 @@
 			<h1 class="display-3">장바구니</h1>
 		</div>
 	</div>
+	<%
+		CartDAO CartDAO = new CartDAO();
+		ArrayList<Cart> list = CartDAO.getAllCarts();
+	%>
 	<div class="container">
 		<div class="row">
 			<table width="100%">
@@ -40,26 +47,18 @@
 					<th>비고</th>
 				</tr>
 				<%
-				ArrayList<Product> cartList = (ArrayList<Product>) session.getAttribute("cartlist");
-				//세션으로 가져오면 object이므로 형변환 필수
-				//out.print("cartList 크기 : " + cartList.size());
-				//cartList : 장바구니
-				if (cartList == null) {
-					cartList = new ArrayList<Product>();
-				}
-
 				int sum = 0; //total을 누적
-				for (int i = 0; i < cartList.size(); i++) {
-					Product product = cartList.get(i);
+				for (int i = 0; i < list.size(); i++) {
+					Cart cart = list.get(i);
 					//금액 = 가격 * 수량
-					int total = product.getUniPrice() * product.getQuantity();
+					int total = cart.getUnitPrice() * cart.getAmount();
 					//total을 누적
 					sum = sum + total;
 				%>
 				<tr>
-					<td><%=product.getProductId()%>-<%=product.getPname()%></td>
-					<td><%=product.getUniPrice()%></td>
-					<td><%=product.getQuantity()%></td>
+					<td><%=cart.getProductName()%></td>
+					<td><%=cart.getUnitPrice()%></td>
+					<td><%=cart.getAmount()%></td>
 					<td><%=total%></td>
 					<td>삭제</td>
 				</tr>

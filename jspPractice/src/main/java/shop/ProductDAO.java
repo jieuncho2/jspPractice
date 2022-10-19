@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import shop.Product;
 
 public class ProductDAO {
+	
 	public ArrayList<Product> getAllProducts() {
 		
 		Connection conn = null;
